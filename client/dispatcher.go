@@ -49,6 +49,8 @@ func createUploaders(targets []string) []uploader {
 			uploaders = append(uploaders, newHTTPUploader(target))
 		} else if target[0:4] == "nats" {
 			uploaders = append(uploaders, newNATSUploader(target))
+		} else if target[0:7] == "mongodb" {
+			uploaders = append(uploaders, newMongoDBUploader(target))
 		} else {
 			log.Infof("An invalid ingest target was specified: %v", target)
 		}
